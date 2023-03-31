@@ -5,7 +5,7 @@
 
 / {
 	compatible = "hiwifi,hc5962", "mediatek,mt7621-soc";
-	model = "HiWiFi HC5962";
+	model = "IPTV&MMDVM";
 
 	aliases {
 		led-boot = &led_system;
@@ -43,9 +43,38 @@
 		};
 	};
 
-	ubi-concat {
-		compatible = "mtd-concat";
-		devices = <&ubiconcat0 &ubiconcat1>;
+	gpio_export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+
+		power_usb2 {
+			gpio-export,name = "power_usb2";
+			gpio-export,output = <1>;
+			gpios = <&gpio 22 GPIO_ACTIVE_HIGH>;
+		};
+
+		power_usb3 {
+			gpio-export,name = "power_usb3";
+			gpio-export,output = <1>;
+			gpios = <&gpio 25 GPIO_ACTIVE_HIGH>;
+		};
+
+		power_sata {
+			gpio-export,name = "power_sata";
+			gpio-export,output = <1>;
+			gpios = <&gpio 27 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
+
+&spi0 {
+	status = "okay";
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <45000000>;
+		broken-flash-reset;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -53,58 +82,28 @@
 			#size-cells = <1>;
 
 			partition@0 {
-				label = "ubi";
-				reg = <0x0 0x79c0000>;
+				label = "u-boot";
+				reg = <0x0 0x30000>;
+				read-only;
 			};
-		};
-	};
-};
 
-&nand {
-	status = "okay";
+			partition@30000 {
+				label = "u-boot-env";
+				reg = <0x30000 0x10000>;
+				read-only;
+			};
 
-	partitions {
-		compatible = "fixed-partitions";
-		#address-cells = <1>;
-		#size-cells = <1>;
+			factory: partition@40000 {
+				label = "factory";
+				reg = <0x40000 0x10000>;
+				read-only;
+			};
 
-		partition@0 {
-			label = "u-boot";
-			reg = <0x0 0x80000>;
-			read-only;
-		};
-
-		partition@80000 {
-			label = "debug";
-			reg = <0x80000 0x80000>;
-			read-only;
-		};
-
-		factory: partition@100000 {
-			label = "factory";
-			reg = <0x100000 0x40000>;
-			read-only;
-		};
-
-		partition@140000 {
-			label = "kernel";
-			reg = <0x140000 0x400000>;
-		};
-
-		ubiconcat0: partition@540000 {
-			label = "ubiconcat0";
-			reg = <0x540000 0x1c80000>;
-		};
-
-		partition@21c0000 {
-			label = "bdinfo";
-			reg = <0x21c0000 0x80000>;
-			read-only;
-		};
-
-		ubiconcat1: partition@2240000 {
-			label = "ubiconcat1";
-			reg = <0x2240000 0x5d40000>;
+			partition@50000 {
+				compatible = "denx,uimage";
+				label = "firmware";
+				reg = <0x50000 0x1fb0000>;
+			};
 		};
 	};
 };
