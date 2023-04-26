@@ -151,7 +151,7 @@
 
 &state_default {
 	gpio {
-		groups = "ephy", "pcie", "rgmii1", "wled", "uartf";
+		groups = "ephy", "pcie", "rgmii1", "wled";
 		function = "gpio";
 	};
 };
