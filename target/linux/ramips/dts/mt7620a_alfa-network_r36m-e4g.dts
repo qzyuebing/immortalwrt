@@ -92,7 +92,7 @@
 
 		led_system: system {
 			label = "green:system";
-			gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
 			default-state = "keep";
 		};
 
