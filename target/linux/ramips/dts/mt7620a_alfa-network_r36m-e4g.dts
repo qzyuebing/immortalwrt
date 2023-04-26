@@ -7,7 +7,7 @@
 
 / {
 	compatible = "alfa-network,r36m-e4g", "ralink,mt7620a-soc";
-	model = "ALFA Network R36M-E4G";
+	model = "BI4PCS MMDVM 4G";
 
 	aliases {
 		label-mac-device = &wmac;
@@ -18,7 +18,7 @@
 	};
 
 	chosen {
-		bootargs = "console=ttyS1,115200";
+		bootargs = "console=ttyS0,115200";
 	};
 
 	gpio-export {
@@ -92,7 +92,7 @@
 
 		led_system: system {
 			label = "green:system";
-			gpios = <&gpio2 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
 			default-state = "keep";
 		};
 
@@ -203,6 +203,10 @@
 };
 
 &uart {
+	status = "okay";
+};
+
+&uart1 {
 	status = "okay";
 };
 
