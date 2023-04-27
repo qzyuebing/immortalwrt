@@ -5,7 +5,7 @@
 
 / {
 	compatible = "hiwifi,hc5962", "mediatek,mt7621-soc";
-	model = "IPTV&MMDVM";
+	model = "BI4PCS IPTV&MMDVM";
 
 	aliases {
 		led-boot = &led_system;
