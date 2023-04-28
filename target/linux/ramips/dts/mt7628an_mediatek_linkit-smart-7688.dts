@@ -5,7 +5,7 @@
 
 / {
 	compatible = "mediatek,linkit-smart-7688", "mediatek,mt7628an-soc";
-	model = "MediaTek LinkIt Smart 7688";
+	model = "BI4PCS MMDVM MT7688";
 
 	aliases {
 		led-boot = &led_wifi;
