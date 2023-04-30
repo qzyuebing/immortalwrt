@@ -259,10 +259,10 @@ endef
 TARGET_DEVICES += tplink_tl-wpa8630p-v2.1-eu
 
 define Device/tplink_tl-wr703n
-  $(Device/tplink-4mlzma)
+  $(Device/tplink-16mlzma)
   SOC := ar9331
   DEVICE_MODEL := TL-WR703N
-  DEVICE_PACKAGES := kmod-usb-chipidea2
+  DEVICE_PACKAGES := kmod-usb-chipidea2 kmod-usb2 kmod-usb-ohci
   TPLINK_HWID := 0x07030101
   SUPPORTED_DEVICES += tl-wr703n
 endef
