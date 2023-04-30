@@ -1287,7 +1287,7 @@ TARGET_DEVICES += zbtlink_zbt-wr8305rt
 
 define Device/zte_q7
   SOC := mt7620a
-  IMAGE_SIZE := 7872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := ZTE
   DEVICE_MODEL := Q7
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
