@@ -5,7 +5,7 @@
 
 / {
 	compatible = "xiaomi,miwifi-mini", "ralink,mt7620a-soc";
-	model = "Xiaomi MiWiFi Mini";
+	model = "BI4PCS MMDVM";
 
 	aliases {
 		led-boot = &led_blue;
@@ -60,7 +60,8 @@
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <10000000>;
+		spi-max-frequency = <45000000>;
+		broken-flash-reset;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -87,7 +88,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0xf80000>;
+				reg = <0x50000 0x1fb0000>;
 			};
 
 			partition@fd0000 {
