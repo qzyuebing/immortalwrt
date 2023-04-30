@@ -33,7 +33,7 @@
 
 		led_wifi: wifi {
 			label = "orange:wifi";
-			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 		};
 	};
 
