@@ -1140,7 +1140,7 @@ TARGET_DEVICES += wrtnode_wrtnode
 
 define Device/xiaomi_miwifi-mini
   SOC := mt7620a
-  IMAGE_SIZE := 15872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := MiWiFi Mini
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci
