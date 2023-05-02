@@ -24,17 +24,17 @@
 
 		led_status_blue: status_blue {
 			label = "blue:status";
-			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
 		};
 
 		led_status_red: status_red {
 			label = "red:status";
-			gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 37 GPIO_ACTIVE_LOW>;
 		};
 
 		led_status_amber: status_amber {
 			label = "amber:status";
-			gpios = <&gpio 20 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
 		};
 	};
 
