@@ -4,7 +4,7 @@
 
 / {
 	compatible = "jotale,js76x8-32m", "jotale,js76x8", "mediatek,mt7628an-soc";
-	model = "BI4PCS-MT7688";
+	model = "BI4PCS MT7688";
 };
 
 &flash0 {
