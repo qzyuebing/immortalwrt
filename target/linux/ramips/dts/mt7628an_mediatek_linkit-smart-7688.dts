@@ -5,7 +5,7 @@
 
 / {
 	compatible = "mediatek,linkit-smart-7688", "mediatek,mt7628an-soc";
-	model = "BI4PCS";
+	model = "BI4PCS MT7688";
 
 	aliases {
 		led-boot = &led_wifi;
@@ -40,10 +40,10 @@
 	keys {
 		compatible = "gpio-keys";
 
-		reset {
+		wps {
 			label = "reset";
 			gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RESTART>;
+			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
 };
@@ -110,6 +110,7 @@
 			factory: partition@40000 {
 				label = "factory";
 				reg = <0x40000 0x10000>;
+				read-only;
 			};
 
 			partition@50000 {
@@ -146,13 +147,27 @@
 };
 
 &ethernet {
-	mtd-mac-address = <&factory 0x2e>;
+	nvmem-cells = <&macaddr_factory_2e>;
+	nvmem-cell-names = "mac-address";
 };
 
 &sdhci {
 	status = "okay";
+	mediatek,cd-high;
 };
 
 &wmac {
 	status = "okay";
+
+	mediatek,mtd-eeprom = <&factory 0x0>;
+};
+
+&factory {
+	compatible = "nvmem-cells";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	macaddr_factory_2e: macaddr@2e {
+		reg = <0x2e 0x6>;
+	};
 };
