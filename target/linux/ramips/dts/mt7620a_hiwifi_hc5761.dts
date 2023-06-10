@@ -2,7 +2,7 @@
 
 / {
 	compatible = "hiwifi,hc5761", "hiwifi,hc5x61", "ralink,mt7620a-soc";
-	model = "HiWiFi HC5761";
+	model = "BI4PCS HiWiFi HC5761";
 
 	aliases {
 		led-boot = &led_system;
