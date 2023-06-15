@@ -62,9 +62,9 @@
 				read-only;
 			};
 
-			partition@20000 {
+			partition@50000 {
 				compatible = "tplink,firmware";
-				reg = <0x50000 0xfb0000>
+				reg = <0x50000 0xf80000>;
 				label = "firmware";
 			};
 
