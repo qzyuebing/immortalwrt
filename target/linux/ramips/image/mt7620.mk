@@ -466,7 +466,7 @@ TARGET_DEVICES += hiwifi_hc5661
 
 define Device/hiwifi_hc5761
   SOC := mt7620a
-  IMAGE_SIZE := 16064k
+  IMAGE_SIZE := 15872k
   DEVICE_VENDOR := HiWiFi
   DEVICE_MODEL := HC5761
   DEVICE_PACKAGES := kmod-mt76x0e kmod-usb2 kmod-usb-ohci kmod-sdhci-mt7620 \
