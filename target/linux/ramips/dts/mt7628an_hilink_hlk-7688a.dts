@@ -7,7 +7,7 @@
 
 / {
 	compatible = "hilink,hlk-7688a", "mediatek,mt7628an-soc";
-	model = "BI4PCS MMDVM 4G";
+	model = "BI4PCS MTK7688";
 
 	aliases {
 		led-boot = &led_wlan;
