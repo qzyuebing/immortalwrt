@@ -7,7 +7,7 @@
 
 / {
 	compatible = "alfa-network,r36m-e4g", "ralink,mt7620a-soc";
-	model = "BI4PCS MMDVM 4G";
+	model = "BI4PCS 4G ";
 
 	aliases {
 		label-mac-device = &wmac;
@@ -87,7 +87,7 @@
 
 		lan {
 			label = "green:lan";
-			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio2 1 GPIO_ACTIVE_LOW>;
 		};
 
 		led_system: system {
