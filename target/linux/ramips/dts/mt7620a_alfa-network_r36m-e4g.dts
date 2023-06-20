@@ -7,7 +7,7 @@
 
 / {
 	compatible = "alfa-network,r36m-e4g", "ralink,mt7620a-soc";
-	model = "BI4PCS MMDVM 4G";
+	model = "BI4PCS 4G TEL";
 
 	aliases {
 		label-mac-device = &wmac;
@@ -15,6 +15,10 @@
 		led-failsafe = &led_system;
 		led-running = &led_system;
 		led-upgrade = &led_system;
+	};
+
+	chosen {
+		bootargs = "console=ttyS2,115200";
 	};
 
 	gpio-export {
@@ -199,10 +203,6 @@
 };
 
 &uart {
-	status = "okay";
-};
-
-&uart1 {
 	status = "okay";
 };
 
