@@ -17,10 +17,6 @@
 		led-upgrade = &led_system;
 	};
 
-	chosen {
-		bootargs = "console=ttyS0,115200";
-	};
-
 	gpio-export {
 		compatible = "gpio-export";
 		#size-cells = <0>;
