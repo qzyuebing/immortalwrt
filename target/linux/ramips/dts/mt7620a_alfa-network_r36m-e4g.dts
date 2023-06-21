@@ -47,7 +47,7 @@
 
 		lan {
 			label = "green:lan";
-			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio2 1 GPIO_ACTIVE_LOW>;
 		};
 
 		led_system: system {
