@@ -45,7 +45,7 @@ endef
 TARGET_DEVICES += tplink_tl-mr3220-v1
 
 define Device/tplink_tl-mr3420-v1
-  $(Device/tplink-4m)
+  $(Device/tplink-16m)
   SOC := ar7241
   DEVICE_MODEL := TL-MR3420
   DEVICE_VARIANT := v1
