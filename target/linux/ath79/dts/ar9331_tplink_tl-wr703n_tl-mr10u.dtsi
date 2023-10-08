@@ -66,7 +66,7 @@
 			partition@20000 {
 				compatible = "tplink,firmware";
 				label = "firmware";
-				reg = <0x50000 0xfb0000>;
+				reg = <0x20000 0xfb0000>;
 			};
 
 			art: partition@3f0000 {
