@@ -5,7 +5,7 @@
 
 / {
 	compatible = "hiwifi,hc5962", "mediatek,mt7621-soc";
-	model = "BI4PCS IPTV&MMDVM";
+	model = "GEEQEE-AX1000";
 
 	aliases {
 		led-boot = &led_system;
