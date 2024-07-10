@@ -655,6 +655,7 @@ TARGET_DEVICES += h3c_tx1806
 
 define Device/hiwifi_hc5962
   $(Device/dsa-migration)
+  $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := HiWiFi
   DEVICE_MODEL := HC5962
