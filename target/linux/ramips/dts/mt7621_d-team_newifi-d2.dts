@@ -24,12 +24,12 @@
 
 		power-amber {
 			label = "amber:power";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 
 		led_power_blue: power-blue {
 			label = "blue:power";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
 		internet-amber {
