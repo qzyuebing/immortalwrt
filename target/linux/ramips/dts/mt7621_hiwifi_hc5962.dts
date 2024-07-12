@@ -154,7 +154,7 @@
 
 &state_default {
 	gpio {
-		groups = "uart3", "jtag";
+		groups =  "uart2","uart3", "jtag";
 		function = "gpio";
 	};
 };
