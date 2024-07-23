@@ -12,7 +12,6 @@
 		led-failsafe = &led_power_blue;
 		led-running = &led_power_blue;
 		led-upgrade = &led_power_blue;
-		label-mac-device = &gmac0;
 	};
 
 	chosen {
@@ -129,9 +128,6 @@
 	};
 };
 
-&gmac0 {
-	mtd-mac-address = <&factory 0xe000>;
-};
 
 &switch0 {
 	ports {
@@ -158,7 +154,6 @@
 		port@4 {
 			status = "okay";
 			label = "wan";
-			mtd-mac-address = <&factory 0xe006>;
 		};
 	};
 };
