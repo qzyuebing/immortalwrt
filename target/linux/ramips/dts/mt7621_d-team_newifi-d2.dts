@@ -5,13 +5,14 @@
 
 / {
 	compatible = "d-team,newifi-d2", "mediatek,mt7621-soc";
-	model = "IPTV-UDPXY";
+	model = "Newifi-D2";
 
 	aliases {
 		led-boot = &led_power_blue;
 		led-failsafe = &led_power_blue;
 		led-running = &led_power_blue;
 		led-upgrade = &led_power_blue;
+		label-mac-device = &gmac0;
 	};
 
 	chosen {
@@ -23,13 +24,39 @@
 
 		power-amber {
 			label = "amber:power";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
 		led_power_blue: power-blue {
 			label = "blue:power";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
+		};
 
+		internet-amber {
+			label = "amber:internet";
+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+		};
+
+		internet-blue {
+			label = "blue:internet";
+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
+		};
+
+		wlan2g {
+			label = "blue:wlan2g";
+			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
+		};
+
+		wlan5g {
+			label = "blue:wlan5g";
+			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
+		};
+
+		usb {
+			label = "blue:usb";
+			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
+			trigger-sources = <&xhci_ehci_port1>, <&ehci_port2>;
+			linux,default-trigger = "usbport";
 		};
 	};
 
@@ -38,8 +65,14 @@
 
 		reset {
 			label = "reset";
-			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_WPS_BUTTON>;
 		};
 	};
 
@@ -47,22 +80,10 @@
 		compatible = "gpio-export";
 		#size-cells = <0>;
 
-		power_usb2 {
-			gpio-export,name = "power_usb2";
-			gpio-export,output = <1>;
-			gpios = <&gpio 22 GPIO_ACTIVE_HIGH>;
-		};
-
 		power_usb3 {
 			gpio-export,name = "power_usb3";
 			gpio-export,output = <1>;
-			gpios = <&gpio 25 GPIO_ACTIVE_HIGH>;
-		};
-
-		power_sata {
-			gpio-export,name = "power_sata";
-			gpio-export,output = <1>;
-			gpios = <&gpio 27 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
 		};
 	};
 };
@@ -115,19 +136,21 @@
 &pcie0 {
 	mt76@0,0 {
 		reg = <0x0000 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x0000>;
-		ieee80211-freq-limit = <2400000 2500000>;
+		mediatek,mtd-eeprom = <&factory 0x8000>;
+		ieee80211-freq-limit = <5000000 6000000>;
 	};
 };
 
 &pcie1 {
 	mt76@0,0 {
 		reg = <0x0000 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x8000>;
-		ieee80211-freq-limit = <5000000 6000000>;
+		mediatek,mtd-eeprom = <&factory 0x0000>;
 	};
 };
 
+&gmac0 {
+	mtd-mac-address = <&factory 0xe000>;
+};
 
 &switch0 {
 	ports {
@@ -154,13 +177,14 @@
 		port@4 {
 			status = "okay";
 			label = "wan";
+			mtd-mac-address = <&factory 0xe006>;
 		};
 	};
 };
 
 &state_default {
 	gpio {
-		groups =  "uart2","uart3", "jtag";
+		groups = "i2c", "jtag", "uart2", "uart3";
 		function = "gpio";
 	};
 };
