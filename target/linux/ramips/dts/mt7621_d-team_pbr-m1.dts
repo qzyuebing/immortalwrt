@@ -23,13 +23,13 @@
 
 		power {
 			label = "blue:power";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 		};
 
 		led_sys: sys {
 			label = "blue:sys";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
 		internet {
