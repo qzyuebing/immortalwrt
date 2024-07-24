@@ -23,13 +23,13 @@
 
 		power {
 			label = "blue:power";
-			gpios = <&gpio 31 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 		};
 
 		led_sys: sys {
 			label = "blue:sys";
-			gpios = <&gpio 32 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 
 		internet {
@@ -53,7 +53,7 @@
 
 		reset {
 			label = "reset";
-			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
 			linux,code = <KEY_RESTART>;
 		};
 	};
@@ -107,8 +107,7 @@
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <50000000>;
-		m25p,fast-read;
+		spi-max-frequency = <45000000>;
 		broken-flash-reset;
 
 		partitions {
@@ -154,12 +153,17 @@
 
 &pcie {
 	status = "okay";
-	pinctrl-0 = <&pcie_pins>, <&uart3_gpio>;
-	reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
-		      <&gpio 7 GPIO_ACTIVE_LOW>;
 };
 
 &pcie0 {
+	mt76@0,0 {
+		reg = <0x0000 0 0 0 0>;
+		mediatek,mtd-eeprom = <&factory 0x0000>;
+		ieee80211-freq-limit = <2400000 2500000>;
+	};
+};
+
+&pcie1 {
 	mt76@0,0 {
 		reg = <0x0000 0 0 0 0>;
 		mediatek,mtd-eeprom = <&factory 0x8000>;
@@ -167,20 +171,8 @@
 	};
 };
 
-&pcie1 {
-	mt76@0,0 {
-		reg = <0x0000 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x0000>;
-	};
-};
-
-&ethernet {
-	pinctrl-0 = <&mdio_pins>, <&rgmii1_pins>;
-};
-
 &gmac0 {
-	nvmem-cells = <&macaddr_factory_e000>;
-	nvmem-cell-names = "mac-address";
+	mtd-mac-address = <&factory 0xe000>;
 };
 
 &switch0 {
@@ -208,8 +200,7 @@
 		port@4 {
 			status = "okay";
 			label = "wan";
-			nvmem-cells = <&macaddr_factory_e006>;
-			nvmem-cell-names = "mac-address";
+			mtd-mac-address = <&factory 0xe006>;
 		};
 	};
 };
@@ -218,19 +209,5 @@
 	gpio {
 		groups = "wdt", "rgmii2", "jtag";
 		function = "gpio";
-	};
-};
-
-&factory {
-	compatible = "nvmem-cells";
-	#address-cells = <1>;
-	#size-cells = <1>;
-
-	macaddr_factory_e000: macaddr@e000 {
-		reg = <0xe000 0x6>;
-	};
-
-	macaddr_factory_e006: macaddr@e006 {
-		reg = <0xe006 0x6>;
 	};
 };
