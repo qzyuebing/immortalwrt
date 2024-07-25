@@ -29,12 +29,12 @@
 
 		led_sys: sys {
 			label = "blue:sys";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
 		internet {
 			label = "blue:internet";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 
 		wlan2g {
