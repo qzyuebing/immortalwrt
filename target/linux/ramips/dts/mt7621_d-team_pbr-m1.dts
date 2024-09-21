@@ -180,6 +180,7 @@
 };
 
 &switch0 {
+	ports {
 		port@1 {
 			status = "okay";
 			label = "lan3";
