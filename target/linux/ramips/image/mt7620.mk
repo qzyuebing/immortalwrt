@@ -39,7 +39,7 @@ TARGET_DEVICES += alfa-network_ac1200rm
 
 define Device/alfa-network_r36m-e4g
   SOC := mt7620a
-  IMAGE_SIZE := 16064k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := ALFA Network
   DEVICE_MODEL := R36M-E4G
   DEVICE_PACKAGES := kmod-i2c-ralink kmod-usb2 kmod-usb-ohci uboot-envtools \
@@ -129,15 +129,6 @@ define Device/bdcom_wap2100-sk
 endef
 TARGET_DEVICES += bdcom_wap2100-sk
 
-define Device/bolt_bl201
-  SOC := mt7620a
-  IMAGE_SIZE := 15872k
-  DEVICE_VENDOR := Bolt
-  DEVICE_MODEL := BL201
-  DEVICE_PACKAGES := kmod-mt76x2
-endef
-TARGET_DEVICES += bolt_bl201
-
 define Device/buffalo_whr-1166d
   SOC := mt7620a
   IMAGE_SIZE := 16064k
@@ -199,17 +190,12 @@ endef
 TARGET_DEVICES += dlink_dch-m225
 
 define Device/dlink_dir-510l
-  $(Device/amit_jboot)
   SOC := mt7620a
-  IMAGE_SIZE := 14208k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := D-Link
   DEVICE_MODEL := DIR-510L
-  DEVICE_PACKAGES += kmod-mt76x0e
-  DLINK_ROM_ID := DLK6E3805001
-  DLINK_FAMILY_MEMBER := 0x6E38
-  DLINK_FIRMWARE_SIZE := 0xDE0000
-  DLINK_IMAGE_OFFSET := 0x210000
-  DEFAULT := n
+  DEVICE_PACKAGES := kmod-mt76x0e kmod-usb2 kmod-usb-ohci
+  SUPPORTED_DEVICES += dir-510l
 endef
 TARGET_DEVICES += dlink_dir-510l
 
@@ -1149,7 +1135,7 @@ TARGET_DEVICES += wrtnode_wrtnode
 
 define Device/xiaomi_miwifi-mini
   SOC := mt7620a
-  IMAGE_SIZE := 15872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := MiWiFi Mini
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci
@@ -1296,7 +1282,7 @@ TARGET_DEVICES += zbtlink_zbt-wr8305rt
 
 define Device/zte_q7
   SOC := mt7620a
-  IMAGE_SIZE := 7872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := ZTE
   DEVICE_MODEL := Q7
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
