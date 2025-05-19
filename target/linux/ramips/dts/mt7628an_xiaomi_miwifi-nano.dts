@@ -5,7 +5,7 @@
 
 / {
 	compatible = "xiaomi,miwifi-nano", "mediatek,mt7628an-soc";
-	model = "Xiaomi MiWiFi Nano";
+	model = "Xiaomi MiWiFi Nano CC";
 
 	aliases {
 		led-boot = &led_status_amber;
@@ -56,6 +56,10 @@
 	};
 };
 
+&uart1 {
+	status = "okay";
+};
+
 &uart2 {
 	status = "okay";
 };
@@ -65,7 +69,8 @@
 };
 
 &ohci {
-	status = "disabled";
+	status = "okay";
+	
 };
 
 &esw {
