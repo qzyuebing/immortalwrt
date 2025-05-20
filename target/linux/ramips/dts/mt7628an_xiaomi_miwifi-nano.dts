@@ -15,10 +15,6 @@
 		label-mac-device = &ethernet;
 	};
 
-	chosen {
-		bootargs = "console=ttyS0,115200";
-	};
-
 	leds {
 		compatible = "gpio-leds";
 
