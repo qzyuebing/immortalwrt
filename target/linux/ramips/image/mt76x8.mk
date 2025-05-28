@@ -331,7 +331,7 @@ define Device/onion_omega2p
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := Onion
   DEVICE_MODEL := Omega2+
-  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620 uqmi
   SUPPORTED_DEVICES += omega2p
 endef
 TARGET_DEVICES += onion_omega2p
@@ -382,10 +382,10 @@ endef
 TARGET_DEVICES += totolink_a3
 
 define Device/totolink_lr1200
-  IMAGE_SIZE := 7872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := TOTOLINK
   DEVICE_MODEL := LR1200
-  DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 uqmi
+  DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620 uqmi
 endef
 TARGET_DEVICES += totolink_lr1200
 
@@ -811,7 +811,7 @@ define Device/xiaomi_miwifi-nano
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := MiWiFi Nano
-  DEVICE_PACKAGES := uboot-envtools
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620 uqmi
   SUPPORTED_DEVICES += miwifi-nano
 endef
 TARGET_DEVICES += xiaomi_miwifi-nano
