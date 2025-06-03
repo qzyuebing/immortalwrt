@@ -4,7 +4,7 @@
 
 / {
 	compatible = "youku,yk-l1", "ralink,mt7620a-soc";
-	model = "Youku YK-L1";
+	model = "Youku YK-L1 by BI4PCS";
 };
 
 &firmware {
