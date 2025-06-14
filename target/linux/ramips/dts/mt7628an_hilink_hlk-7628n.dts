@@ -7,7 +7,17 @@
 
 / {
 	compatible = "hilink,hlk-7628n", "mediatek,mt7628an-soc";
-	model = "HILINK HLK-7628N";
+	model = "MMDVM Rooter by BH1SLR BH3HAF BG7RIQ BI4PCS";
+
+	aliases {
+		led-boot = &led_wlan;
+		led-failsafe = &led_wlan;
+		led-upgrade = &led_wlan;
+	};
+
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
 
 	keys {
 		compatible = "gpio-keys";
@@ -22,9 +32,10 @@
 	leds {
 		compatible = "gpio-leds";
 
-		wlan {
+		led_wlan: wlan {
 			label = "green:wlan";
 			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
+			linux,default-trigger = "phy0tpt";
 		};
 	};
 };
