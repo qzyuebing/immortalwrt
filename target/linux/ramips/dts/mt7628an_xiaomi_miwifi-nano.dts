@@ -5,13 +5,13 @@
 
 / {
 	compatible = "xiaomi,miwifi-nano", "mediatek,mt7628an-soc";
-	model = " BI4PCS ";
+	model = "Xiaomi MiWiFi Nano";
 
 	aliases {
 		led-boot = &led_status_amber;
-		led-failsafe = &led_status_4G;
-		led-running = &led_status_amber;
-		led-upgrade = &led_status_4G;
+		led-failsafe = &led_status_red;
+		led-running = &led_status_blue;
+		led-upgrade = &led_status_amber;
 		label-mac-device = &ethernet;
 	};
 
@@ -22,14 +22,14 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_status_TF: status_TF {
-			label = "TF:status";
-			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
+		led_status_blue: status_blue {
+			label = "blue:status";
+			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
 		};
 
-		led_status_4G: status_4G {
-			label = "4G:status";
-			gpios = <&gpio 36 GPIO_ACTIVE_LOW>;
+		led_status_red: status_red {
+			label = "red:status";
+			gpios = <&gpio 37 GPIO_ACTIVE_LOW>;
 		};
 
 		led_status_amber: status_amber {
@@ -60,24 +60,12 @@
 	status = "okay";
 };
 
-&uart2 {
-	status = "okay";
-};
-
-&sdhci {
-	status = "okay";
-	mediatek,cd-low;
-	
-};
-
 &ehci {
-	status = "okay";
-	
+	status = "disabled";
 };
 
 &ohci {
-	status = "okay";
-	
+	status = "disabled";
 };
 
 &esw {
