@@ -5,7 +5,7 @@
 
 / {
 	compatible = "xiaomi,miwifi-nano", "mediatek,mt7628an-soc";
-	model = "Xiaomi MiWiFi Nano";
+	model = "Xiaomi MiWiFi Nano by BI4PCS";
 
 	aliases {
 		led-boot = &led_status_amber;
