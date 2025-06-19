@@ -10,32 +10,30 @@
 	model = "MMDVM Rooter by BH1SLR BH3HAF BG7RIQ BI4PCS";
 
 	aliases {
-		led-boot = &led_wlan;
-		led-failsafe = &led_wlan;
-		led-upgrade = &led_wlan;
+		led-boot = &wlan;
+		led-failsafe = &wlan;
+		led-upgrade = &lwlan;
 	};
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
 
-	keys {
-		compatible = "gpio-keys";
+	leds {
+		compatible = "gpio-leds";
 
-		reset {
-			label = "reset";
-			gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RESTART>;
+		wlan {
+			label = "green:wlan";
+			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
 		};
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		led_wlan: wlan {
+		wlan {
 			label = "green:wlan";
 			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
-			linux,default-trigger = "phy0tpt";
 		};
 	};
 };
