@@ -7,7 +7,17 @@
 
 / {
 	compatible = "hilink,hlk-7628n", "mediatek,mt7628an-soc";
-	model = "HILINK HLK-7628N";
+	model = "MMDVM Rooter by BH1SLR BH3HAF BG7RIQ BI4PCS";
+
+	aliases {
+		led-boot = &led_wlan;
+		led-failsafe = &led_wlan;
+		led-upgrade = &led_wlan;
+	};
+
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
 
 	keys {
 		compatible = "gpio-keys";
@@ -22,9 +32,10 @@
 	leds {
 		compatible = "gpio-leds";
 
-		wlan {
+		led_wlan: wlan {
 			label = "green:wlan";
 			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
+			linux,default-trigger = "phy0tpt";
 		};
 	};
 };
@@ -47,7 +58,6 @@
 		compatible = "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <10000000>;
-		broken-flash-reset;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -82,22 +92,9 @@
 };
 
 &ethernet {
-	nvmem-cells = <&macaddr_factory_28>;
-	nvmem-cell-names = "mac-address";
+	mtd-mac-address = <&factory 0x28>;
 };
 
 &wmac {
 	status = "okay";
-
-	mediatek,mtd-eeprom = <&factory 0x0>;
-};
-
-&factory {
-	compatible = "nvmem-cells";
-	#address-cells = <1>;
-	#size-cells = <1>;
-
-	macaddr_factory_28: macaddr@28 {
-		reg = <0x28 0x6>;
-	};
 };
