@@ -7,7 +7,7 @@
 
 / {
 	compatible = "hilink,hlk-7688a", "mediatek,mt7628an-soc";
-	model = "Hi-Link HLK-7688A";
+	model = "MMDVM Rooter by BH1SLR BH3HAF BG7RIQ BI4PCS";
 
 	aliases {
 		led-boot = &led_wlan;
