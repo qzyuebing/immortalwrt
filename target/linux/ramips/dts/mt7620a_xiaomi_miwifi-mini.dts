@@ -30,12 +30,12 @@
 
 		yellow {
 			label = "yellow:status";
-			gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
 		};
 
 		red {
 			label = "red:status";
-			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -60,7 +60,7 @@
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <50000000>;
+		spi-max-frequency = <45000000>;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -87,7 +87,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0xf80000>;
+				reg = <0x50000 0xfb0000>;
 			};
 
 			partition@fd0000 {
@@ -113,6 +113,10 @@
 	status = "okay";
 };
 
+&uart {
+	status = "okay";
+};
+
 &ohci {
 	status = "okay";
 };
@@ -132,10 +136,6 @@
 	pinctrl-names = "default", "pa_gpio";
 	pinctrl-0 = <&pa_pins>;
 	pinctrl-1 = <&pa_gpio_pins>;
-};
-
-&uart {
-	status = "okay";
 };
 
 &pcie {
