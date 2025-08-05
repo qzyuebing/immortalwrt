@@ -126,6 +126,15 @@
 	};
 };
 
+&pinctrl {
+	uart3_gpio: uart3-gpio {
+		uart3 {
+			groups = "uart3";
+			function = "gpio";
+		};
+	};
+};
+
 &pcie {
 	status = "okay";
 };
@@ -177,7 +186,7 @@
 
 &state_default {
 	gpio {
-		groups = "uart3", "wdt", "rgmii2", "jtag";
+		groups = "wdt", "rgmii2", "jtag";
 		function = "gpio";
 	};
 };
