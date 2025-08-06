@@ -46,11 +46,9 @@
 &spi0 {
 	status = "okay";
 
-	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <45000000>;
-		broken-flash-reset;
+		spi-max-frequency = <10000000>;
 
 		partitions {
 			compatible = "fixed-partitions";
