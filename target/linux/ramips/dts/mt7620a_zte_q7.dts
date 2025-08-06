@@ -22,7 +22,7 @@
 			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
-		led_wifi_blue: statblue {
+		wifi {
 			label = "blue:wifi";
 			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
 		};
