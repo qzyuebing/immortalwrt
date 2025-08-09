@@ -33,6 +33,31 @@
 			label = "Wifi:status";
 			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
 		};
+
+		3g {
+			label = "blue:3g";
+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+		};
+
+		4g {
+			label = "blue:4g";
+			gpios = <&gpio 5 GPIO_ACTIVE_LOW>;
+		};
+
+		rssi1 {
+			label = "blue:rssi1";
+			gpios = <&gpio 46 GPIO_ACTIVE_LOW>;
+		};
+
+		rssi2 {
+			label = "blue:rssi2";
+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
+		};
+
+		rssi3 {
+			label = "blue:rssi3";
+			gpios = <&gpio 2 GPIO_ACTIVE_LOW>;
+		};
 	};
 
 	keys {
