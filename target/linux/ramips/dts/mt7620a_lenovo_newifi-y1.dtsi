@@ -73,6 +73,10 @@
 	status = "okay";
 };
 
+&sdhci {
+	status = "okay";
+};
+
 &ohci {
 	status = "okay";
 };
