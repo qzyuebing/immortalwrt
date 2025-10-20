@@ -17,12 +17,12 @@
 
 		led_power: power {
 			label = "blue:power";
-			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
 		};
 
 		wlan1 {
 			label = "blue:wifi";
-			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		wlan2 {
@@ -44,7 +44,7 @@
 
 		internet {
 			label = "blue:internet";
-			gpios = <&gpio2 11 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
