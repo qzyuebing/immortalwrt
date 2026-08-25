@@ -5,7 +5,7 @@
 
 / {
 	compatible = "glinet,gl-mt300a", "ralink,mt7620a-soc";
-	model = "GL-MT300A";
+	model = "BI4PCS";
 
 	aliases {
 		label-mac-device = &wmac;
@@ -20,12 +20,12 @@
 
 		wan {
 			label = "gl-mt300a:wan";
-			gpios = <&gpio2 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
 		lan {
 			label = "gl-mt300a:lan";
-			gpios = <&gpio2 1 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		wlan {
