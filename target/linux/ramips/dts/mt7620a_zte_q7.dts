@@ -25,6 +25,10 @@
 		led_status_blue: statblue {
 			label = "blue:status";
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+
+		statred2 {
+			labe2 = "red2:status";
+			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
 		};
 	};
 
