@@ -28,8 +28,8 @@
 
 		};
 
-		led_status_blue2: statblue {
-			labe2 = "blue2:status";
+		red {
+			label = "red:status";
 			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
 		};
 	};
