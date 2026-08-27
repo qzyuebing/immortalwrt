@@ -27,11 +27,6 @@
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
 		};
-
-		red {
-			label = "red:status";
-			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
-		};
 	};
 
 	keys {
