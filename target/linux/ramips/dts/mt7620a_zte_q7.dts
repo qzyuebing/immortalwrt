@@ -5,7 +5,7 @@
 
 / {
 	compatible = "zte,q7", "ralink,mt7620a-soc";
-	model = "ZTE Q7";
+	model = "BI4PCS";
 
 	aliases {
 		led-boot = &led_status_blue;
