@@ -30,6 +30,21 @@
         statgreen {
            label = "green:status";
            gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
+       	};
+
+	    statyellow {
+		   label = "yellow:status";
+		   gpios = <&gpio2 0 GPIO_ACTIVE_LOW>;
+	    };
+
+	    statwhite {
+		    label = "white:status";
+		    gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+	    };
+
+	    statpurple {
+		   label = "purple:status";
+		   gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 
 		};
 	};
