@@ -10,17 +10,6 @@
 		bootargs = "console=ttyS0,115200";
 	};
 
-	keys {
-		compatible = "gpio-keys";
-
-		reset {
-			label = "reset";
-			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RESTART>;
-		};
-	};
-};
-
 &gpio2 {
 	status = "okay";
 };
