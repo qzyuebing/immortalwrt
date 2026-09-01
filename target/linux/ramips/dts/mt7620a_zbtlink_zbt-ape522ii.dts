@@ -10,32 +10,38 @@
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
+	aliases {
+		led-boot = &led_power;
+		led-failsafe = &led_power;
+		led-running = &led_power;
+		led-upgrade = &led_power;
+		label-mac-device = &ethernet;
 
 	leds {
 		compatible = "gpio-leds";
 
 		sys1 {
 			label = "green:sys1";
-			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		sys2 {
 			label = "green:sys2";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		sys3 {
 			label = "green:sys3";
-			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
 
 		sys4 {
 			label = "green:sys4";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
-		wlan2g4 {
-			label = "green:wlan2g4";
+		led_power: power {
+			label = "blue:power";
 			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -88,7 +94,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0xf80000>;
+				reg = <0x50000 0xfb0000>;
 			};
 		};
 	};
@@ -109,6 +115,18 @@
 	pinctrl-names = "default", "pa_gpio";
 	pinctrl-0 = <&pa_pins>;
 	pinctrl-1 = <&pa_gpio_pins>;
+};
+
+&sdhci {
+	status = "okay";
+};
+
+&ehci {
+	status = "okay";
+};
+
+&ohci {
+	status = "okay";
 };
 
 &pcie {
