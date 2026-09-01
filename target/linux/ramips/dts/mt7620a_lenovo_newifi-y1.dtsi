@@ -77,10 +77,6 @@
 	status = "okay";
 };
 
-&sdhci {
-	status = "okay";
-};
-
 &pcie {
 	status = "okay";
 };
@@ -103,7 +99,7 @@
 
 &state_default {
 	gpio {
-		groups = "i2c", "uartf", "rgmii1", "rgmii2", "ephy", "wled";
+		groups = "uartf", "wled", "nd_sd";
 		function = "gpio";
 	};
 };
