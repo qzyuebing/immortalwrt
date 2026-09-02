@@ -24,22 +24,22 @@
 
 		led_wps: wps {
 			label = "green:wps";
-			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		rep {
 			label = "blue:rep";
-			gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi1 {
 			label = "blue:wifi1";
-			gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi2 {
 			label = "blue:wifi2";
-			gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi3 {
@@ -136,4 +136,8 @@
 
 &wmac {
 	ralink,mtd-eeprom = <&factory 0x0>;
+};
+
+&sdhci {
+	status = "okay";
 };
