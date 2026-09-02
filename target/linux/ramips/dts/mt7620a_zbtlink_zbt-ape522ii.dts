@@ -7,6 +7,14 @@
 	compatible = "zbtlink,zbt-ape522ii", "ralink,mt7620a-soc";
 	model = "Zbtlink ZBT-APE522II";
 
+	aliases {
+		led-boot = &wlan2g4;
+		led-failsafe = &sys1;
+		led-running = &lsys2;
+		led-upgrade = &sys3;
+		label-mac-device = &ethernet;
+	};
+
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
