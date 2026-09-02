@@ -132,7 +132,6 @@
 	status = "okay";
 };
 
-
 &pcie {
 	status = "okay";
 };
