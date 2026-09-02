@@ -7,14 +7,6 @@
 	compatible = "zbtlink,zbt-ape522ii", "ralink,mt7620a-soc";
 	model = "Zbtlink ZBT-APE522II";
 
-	aliases {
-		led-boot = &wlan2g4;
-		led-failsafe = &sys1;
-		led-running = &lsys2;
-		led-upgrade = &sys3;
-		label-mac-device = &ethernet;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -24,22 +16,22 @@
 
 		sys1 {
 			label = "green:sys1";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
 
 		sys2 {
 			label = "green:sys2";
-			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		sys3 {
 			label = "green:sys3";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		sys4 {
 			label = "green:sys4";
-			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
 
 		wlan2g4 {
@@ -69,7 +61,7 @@
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <45000000>;
+		spi-max-frequency = <10000000>;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -96,7 +88,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x1fb0000>;
+				reg = <0x50000 0xf80000>;
 			};
 		};
 	};
@@ -118,18 +110,6 @@
 	pinctrl-names = "default", "pa_gpio";
 	pinctrl-0 = <&pa_pins>;
 	pinctrl-1 = <&pa_gpio_pins>;
-};
-
-&sdhci {
-	status = "okay";
-};
-
-&ehci {
-	status = "okay";
-};
-
-&ohci {
-	status = "okay";
 };
 
 &pcie {
