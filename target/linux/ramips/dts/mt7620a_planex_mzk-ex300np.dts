@@ -26,27 +26,27 @@
 		led_wps: wps {
 			function = LED_FUNCTION_WPS;
 			color = <LED_COLOR_ID_GREEN>;
-			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		rep {
 			label = "blue:rep";
-			gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi1 {
 			label = "blue:wifi1";
-			gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi2 {
 			label = "blue:wifi2";
-			gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi3 {
 			label = "blue:wifi3";
-			gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -57,12 +57,6 @@
 			label = "reset";
 			gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
-		};
-
-		wps {
-			label = "wps";
-			gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-			linux,code = <KEY_RFKILL>;
 		};
 	};
 };
@@ -100,35 +94,16 @@
 				read-only;
 			};
 
-			partition@40000 {
+			factory: partition@40000 {
 				label = "factory";
 				reg = <0x40000 0x10000>;
 				read-only;
-
-				nvmem-layout {
-					compatible = "fixed-layout";
-					#address-cells = <1>;
-					#size-cells = <1>;
-
-					eeprom_factory_0: eeprom@0 {
-						reg = <0x0 0x200>;
-					};
-
-					macaddr_factory_4: macaddr@4 {
-						reg = <0x4 0x6>;
-					};
-				};
 			};
 
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x730000>;
-			};
-
-			partition@780000 {
-				label = "Udata";
-				reg = <0x780000 0x80000>;
+				reg = <0x50000 0x7b0000>;
 			};
 		};
 	};
@@ -145,13 +120,23 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&ephy_pins>;
 
-	nvmem-cells = <&macaddr_factory_4>;
-	nvmem-cell-names = "mac-address";
+	mtd-mac-address = <&factory 0x4>;
 
 	mediatek,portmap = "llllw";
 };
 
+&sdhci {
+	status = "okay";
+};
+
+&ehci {
+	status = "okay";
+};
+
+&ohci {
+	status = "okay";
+};
+
 &wmac {
-	nvmem-cells = <&eeprom_factory_0>;
-	nvmem-cell-names = "eeprom";
+	ralink,mtd-eeprom = <&factory 0x0>;
 };
