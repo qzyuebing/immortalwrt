@@ -2,6 +2,7 @@
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
+#include <dt-bindings/leds/common.h>
 
 / {
 	compatible = "planex,mzk-ex300np", "ralink,mt7620a-soc";
@@ -23,28 +24,29 @@
 		};
 
 		led_wps: wps {
-			label = "green:wps";
+			function = LED_FUNCTION_WPS;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 
 		rep {
 			label = "blue:rep";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi1 {
 			label = "blue:wifi1";
-			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi2 {
 			label = "blue:wifi2";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
 		wifi3 {
 			label = "blue:wifi3";
-			gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -55,12 +57,6 @@
 			label = "reset";
 			gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
-		};
-
-		wps {
-			label = "wps";
-			gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-			linux,code = <KEY_RFKILL>;
 		};
 	};
 };
@@ -107,12 +103,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x730000>;
-			};
-
-			partition@780000 {
-				label = "Udata";
-				reg = <0x780000 0x80000>;
+				reg = <0x50000 0x7b0000>;
 			};
 		};
 	};
@@ -134,10 +125,18 @@
 	mediatek,portmap = "llllw";
 };
 
-&wmac {
-	ralink,mtd-eeprom = <&factory 0x0>;
-};
-
 &sdhci {
 	status = "okay";
+};
+
+&ehci {
+	status = "okay";
+};
+
+&ohci {
+	status = "okay";
+};
+
+&wmac {
+	ralink,mtd-eeprom = <&factory 0x0>;
 };
