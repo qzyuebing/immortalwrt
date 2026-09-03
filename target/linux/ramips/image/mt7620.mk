@@ -1089,9 +1089,10 @@ TARGET_DEVICES += planex_mzk-750dhp
 
 define Device/planex_mzk-ex300np
   SOC := mt7620a
-  IMAGE_SIZE := 7360k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := Planex
   DEVICE_MODEL := MZK-EX300NP
+DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci kmod-mmc-mtk
   SUPPORTED_DEVICES += mzk-ex300np
 endef
 TARGET_DEVICES += planex_mzk-ex300np
