@@ -23,12 +23,17 @@
 
 		led_power: powerled {
 			label = "green:power";
-			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
 		wifiled {
 			label = "green:wifi";
 			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
+		};
+
+		sys1 {
+			label = "green:sys1";
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};
 	};
 
