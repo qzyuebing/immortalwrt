@@ -38,17 +38,12 @@
 
 		sys2 {
 			label = "green:sys2";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 
 		sys3 {
 			label = "green:sys3";
 			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
-		};
-
-		sys4 {
-			label = "green:sys4";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};
 	};
 
